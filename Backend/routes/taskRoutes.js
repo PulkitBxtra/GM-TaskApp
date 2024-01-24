@@ -1,23 +1,23 @@
 const express = require("express");
 const {
-  getTasks,
-  createTask,
-  getTaskById,
-  updateTaskbyID,
-  deleteTaskbyID,
-  updateShareTaskbyID,
-  shareTask,
-} = require("../controllers/taskControllers");
+  getNotess,
+  createNotes,
+  getNotesById,
+  updateNotesbyID,
+  deleteNotesbyID,
+  updateShareNotesbyID,
+  shareNotes,
+} = require("../controllers/NotesControllers");
 const protect = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-router.route("/").get(protect, getTasks);
+router.route("/").get(protect, getNotess);
 router
   .route("/:id")
-  .get(protect, getTaskById)
-  .put(protect, updateTaskbyID)
-  .delete(protect, deleteTaskbyID);
-router.route("/create").post(protect, createTask);
-router.route("/share/:id").get(shareTask).put(protect, updateShareTaskbyID);
+  .get(protect, getNotesById)
+  .put(protect, updateNotesbyID)
+  .delete(protect, deleteNotesbyID);
+router.route("/create").post(protect, createNotes);
+router.route("/share/:id").get(shareNotes).put(protect, updateShareNotesbyID);
 module.exports = router;
